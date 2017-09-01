@@ -1,0 +1,10 @@
+python==2.7.12
+numpy==1.11.1
+scipy==0.18.0
+pandas==0.18.1
+matplotlib==1.5.1
+seaborn==0.7.1
+bokeh==0.12.2
+pysam==0.9.1
+pybedtools==0.7.8
+cutadapt==1.10
