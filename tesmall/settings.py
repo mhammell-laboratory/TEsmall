@@ -34,6 +34,11 @@ def check_executions():
     except OSError:
         print "Could not find samtools, please reinstall."
 
+    try:
+        subprocess.check_call(["bedtools"])
+    except OSError:
+        print "Could not find bedtools, please reinstall."
+
 
 def check_requirements(genome):
     if (isdir(TESMALL) and
