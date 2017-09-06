@@ -17,29 +17,6 @@ WHOLE_GENOME = join(TESMALL, "genomes/{0}/sequence")
 ANNOTATION = join(TESMALL, "genomes/{0}/annotation")
 BOWTIE_INDEX = join(TESMALL, "genomes/{0}/sequence/bowtie_index")
 
-
-def check_executions():
-    try:
-        subprocess.check_call(["cutadapt", "-h"])
-    except OSError:
-        print "Could not find cutadapt, please reinstall."
-
-    try:
-        subprocess.check_call(["bowtie", "-h"])
-    except OSError:
-        print "Could not find bowtie, please reinstall."
-
-    try:
-        subprocess.check_call(["samtools"])
-    except OSError:
-        print "Could not find samtools, please reinstall."
-
-    try:
-        subprocess.check_call(["bedtools"])
-    except OSError:
-        print "Could not find bedtools, please reinstall."
-
-
 def check_requirements(genome):
     if (isdir(TESMALL) and
        isdir(WHOLE_GENOME.format(genome)) and
