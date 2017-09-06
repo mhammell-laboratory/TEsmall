@@ -45,7 +45,7 @@ def main():
         help="Unique label for each sample.")
     args = parser.parse_args()
 
-    #get_requirements(args.genome)
+    get_requirements(args.genome)
     annofiles = []
     if not args.label:
         args.label = map(lambda s: re.sub(r".f(ast)?q(.gz)?$", "", os.path.basename(s)), args.fastq)
