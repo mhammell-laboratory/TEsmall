@@ -1,4 +1,5 @@
 """Alignment module."""
+import logging
 from os.path import splitext, basename
 import subprocess
 
@@ -8,6 +9,7 @@ def trim_3p_adapters(fastq, prefix, adapter, minlen, maxlen):
     logfile = "{0}.cutadapt1.log".format(prefix)
     command = 'cutadapt -a "{0}" -m {1} -M {2} -o "{3}" "{4}" > "{5}"'
     command = command.format(adapter, minlen, maxlen, outfile, fastq, logfile)
+    logging.info("Trimming 3' adapters...")
     subprocess.call(command, shell=True)
     return outfile
 
@@ -17,6 +19,7 @@ def trim_5p_adapters(fastq, prefix, adapter, minlen, maxlen):
     logfile = "{0}.cutadapt2.log".format(prefix)
     command = 'cutadapt -g "{0}" -m {1} -M {2} -o "{3}" "{4}" > "{5}"'
     command = command.format(adapter, minlen, maxlen, outfile, fastq, logfile)
+    logging.info("Trimming 5' adapters...")
     subprocess.call(command, shell=True)
     return outfile
 
@@ -32,6 +35,7 @@ def map_multi_reads(fastq, ebwt, maxaln=100, mm=0):
               '--un "{2}" --max "{3}" "{4}" "{5}" 2> "{6}" | samtools view -F 4 -buS - '\
               '2>> "{6}" | samtools sort -n -o "{7}.multi.bam" - 2>> "{6}"'
     command = command.format(maxaln, mm, unfile, exfile, ebwt, fastq, logfile, prefix)
+    logging.info("Aligning reads to reference sequences...")
     subprocess.call(command, shell=True)
     return "{0}.multi.bam".format(prefix)
 
@@ -45,6 +49,7 @@ def map_bestone_reads(fastq, ebwt, mm=0):
               '"{4}" | samtools view -F 4 -buS - 2>> "{4}" | samtools sort -n '\
               '-o "{5}.bam" - 2>> "{4}"'
     command = command.format(mm, unfile, ebwt, fastq, logfile, prefix)
+    logging.info("Removing rRNA-derived reads...")
     subprocess.call(command, shell=True)
     return "{0}.bam".format(prefix), unfile
 

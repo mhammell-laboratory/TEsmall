@@ -3,6 +3,7 @@ Check the requirements
 """
 
 # from contextlib import closing
+import logging
 import os
 from os.path import basename, expanduser, isdir, isfile, join
 # import shutil
@@ -18,6 +19,7 @@ ANNOTATION = join(TESMALL, "genomes/{0}/annotation")
 BOWTIE_INDEX = join(TESMALL, "genomes/{0}/sequence/bowtie_index")
 
 def check_requirements(genome):
+    logging.info("Checking if reference genome and annotation files exist...")
     if (isdir(TESMALL) and
        isdir(WHOLE_GENOME.format(genome)) and
        isfile(join(WHOLE_GENOME.format(genome), "genome.fa")) and
@@ -50,6 +52,7 @@ def check_requirements(genome):
 
 def get_requirements(genome):
     if not check_requirements(genome):
+        logging.info("Downloading reference genome and annotation files...")
         url = {"hg19": "https://www.dropbox.com/s/rkdd0bwaykd66xg/hg19.tar.gz"}
         path = join(TESMALL, "genomes")
         filepath = join(path, basename(url[genome]))

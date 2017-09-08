@@ -1,5 +1,6 @@
 import argparse
 import glob
+import logging
 import os
 
 import pybedtools
@@ -9,6 +10,7 @@ from settings import *
 def annotate_reads(genome, order, multi):
     root = os.path.splitext(os.path.basename(multi))[0]
     root = os.path.splitext(root)[0]
+    logging.info("Assigning reads to genomic features...")
     bedfiles = map(lambda s: os.path.join(ANNOTATION.format(genome), "{0}.bed".format(s)), order)
     #bedfiles = sorted(glob.glob(os.path.join(ANNOTATION.format(genome), "*.bed")))
     outfname = "{0}.anno".format(root)

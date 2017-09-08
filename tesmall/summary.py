@@ -1,10 +1,11 @@
 from __future__ import division
 import datetime
 import argparse
+import logging
 import os
 import string
 from math import pi, cos, sin
-from collections import defaultdict
+from collections import defaultdict, Counter
 import pandas as pd
 import bokeh
 from bokeh.layouts import column, row, layout
@@ -16,6 +17,7 @@ from bokeh.models import HoverTool, ColumnDataSource
 from bokeh.models.widgets import DataTable, TableColumn, NumberFormatter
 from bokeh.embed import components
 import seaborn as sns
+import pysam
 
 template = """
 <!DOCTYPE html>
@@ -194,6 +196,25 @@ footer = """
 </html>
 """
 
+def get_read_info(multibam):
+    root = os.path.splitext(os.path.basename(multibam))[0]
+    root = os.path.splitext(root)[0]
+    output = "{0}.rinfo".format(root)
+    with open(output, "w") as outfile:
+        outfile.write("id\tlength\tcount\tmapper\n")
+        fname = multibam
+        rcounter = Counter()
+        bamfile = pysam.AlignmentFile(fname, "rb", check_sq=False)
+        for read in bamfile:
+            rid = read.query_name
+            rlen = read.query_length
+            rcounter.update([(rid, rlen)])
+
+        for rid, rlen in rcounter:
+            num = rcounter[(rid, rlen)]
+            outfile.write("{0}\t{1}\t{2}\t{3}\n".format(rid, rlen, num, "unique" if num == 1 else "multi"))
+    return output
+
 def get_stat(prefix, maxaln):
     stat = {"Statistics": [], "Number of reads": [], "Proportion": []}
     with open("{0}.cutadapt1.log".format(prefix)) as infile:
@@ -361,6 +382,7 @@ def get_parser():
     return parser
 
 def gen_summary(prefix, order, maxaln):
+    logging.info("Generating summary report...")
     idx = order.index("TE")
     order[idx] = "sense_TE"
     order.insert(idx, "anti_TE")

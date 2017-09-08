@@ -1,15 +1,16 @@
 import argparse
+import logging
 import os
+import sys
 
 from abundance import *
 from alignment import *
 from annotation import *
 from settings import *
-from qc import *
 from summary import *
 
 def main():
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(prog="TEsmall")
     parser.add_argument("-a", "--adapter", metavar="STR",
         default='TGGAATTCTCGGGTGCCAAGG', help="Sequence of an adapter that was "
         "ligated to the 3' end. The adapter itself and anything that follows "
@@ -43,7 +44,14 @@ def main():
         "the filename extension (.gz).")
     parser.add_argument("-l", "--label", metavar="STR", nargs="+",
         help="Unique label for each sample.")
+    parser.add_argument('--verbose', metavar="INT", type=int, nargs='?',
+        default=2, help="Set verbose level. 0: only show critical message, 1: show additional "
+        "warning message, 2: show process information, 3: show debug messages. DEFAULT:2")
     args = parser.parse_args()
+    
+    logging.basicConfig(level=(4 - args.verbose) * 10,
+        format="%(asctime)s %(levelname)s %(message)s",
+        stream=sys.stderr, filemode="w")
 
     get_requirements(args.genome)
     annofiles = []

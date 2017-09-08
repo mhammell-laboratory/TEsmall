@@ -1,9 +1,11 @@
+import logging
 import re
 from os.path import splitext
 import pandas as pd
 
 def calc_composition(anno_list):
     for anno in anno_list:
+        logging.info("Calculating read composition...")
         df = pd.read_table(anno, usecols=["rid", "rlen", "ftype"])
         df = df.groupby(["rlen", "ftype"]).rid.nunique()
         df = df.unstack("rlen")
@@ -15,6 +17,7 @@ def calc_composition(anno_list):
 def calc_abundance(anno_list):
     count_dict = {}
     for anno in anno_list:
+        logging.info("Calculating feature abundances...")
         df = pd.read_table(anno, usecols=["rid", "ftype", "fid"])
         rweight = 1/df.groupby("rid").fid.nunique()
         ftable = df.groupby(["ftype", "fid"]).rid.unique()
