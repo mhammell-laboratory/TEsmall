@@ -8,6 +8,7 @@ from alignment import *
 from annotation import *
 from settings import *
 from summary import *
+from version import __version__
 
 def main():
     parser = argparse.ArgumentParser(prog="TEsmall")
@@ -44,9 +45,10 @@ def main():
         "the filename extension (.gz).")
     parser.add_argument("-l", "--label", metavar="STR", nargs="+",
         help="Unique label for each sample.")
-    parser.add_argument('--verbose', metavar="INT", type=int, nargs='?',
-        default=2, help="Set verbose level. 0: only show critical message, 1: show additional "
+    parser.add_argument("--verbose", metavar="INT", type=int, default=2,
+        help="Set verbose level. 0: only show critical message, 1: show additional "
         "warning message, 2: show process information, 3: show debug messages. DEFAULT:2")
+    parser.add_argument("-v", "--version", action="version", version="%(prog)s {0}".format(__version__))
     args = parser.parse_args()
     
     logging.basicConfig(level=(4 - args.verbose) * 10,

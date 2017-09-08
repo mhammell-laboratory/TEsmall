@@ -2,9 +2,7 @@
 
 from setuptools import setup, find_packages
 
-import tesmall
-
-version = tesmall.__version__
+execfile('tesmall/version.py')
 
 with open("README.md") as f:
     readme = f.read()
@@ -13,7 +11,7 @@ with open('requirements.txt') as f:
     install_requires = f.read().strip().splitlines()
 
 setup(name="TEsmall",
-      version=version,
+      version=__version__,
       description="A pipeline for profiling TE-associated small RNAs",
       long_description=readme,
       classifiers=[
