@@ -52,6 +52,8 @@ def check_requirements(genome):
 
 def get_requirements(genome):
     if not check_requirements(genome):
+        if not isdir(join(TESMALL, "genomes")):
+            os.makedirs(join(TESMALL, "genomes"))
         logging.info("Downloading reference genome and annotation files...")
         url = {"hg19": "https://www.dropbox.com/s/rkdd0bwaykd66xg/hg19.tar.gz"}
         path = join(TESMALL, "genomes")
