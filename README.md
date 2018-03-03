@@ -9,7 +9,7 @@ $ wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
 $ bash Miniconda3-latest-Linux-x86_64.sh
 ```
 
-### Setup Bioconda
+### Setup channels
 
 ```
 $ conda config --add channels conda-forge
@@ -87,4 +87,14 @@ optional arguments:
                         information, 3: show debug messages. DEFAULT:2
   -v, --version         show program's version number and exit
 ```
+
+### TO DO
+
+The following things need to be done
+
+- Implement the parallel execution
+- Refine the summary report
+- Switch to Ensembl annotation
+- Write a Bioconda recipe
+- Build a Docker image
 
