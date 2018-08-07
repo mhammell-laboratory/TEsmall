@@ -88,13 +88,4 @@ optional arguments:
   -v, --version         show program's version number and exit
 ```
 
-### TO DO
-
-The following things need to be done
-
-- Implement the parallel execution
-- Refine the summary report
-- Switch to Ensembl annotation
-- Write a Bioconda recipe
-- Build a Docker image
 
