@@ -55,7 +55,7 @@ def get_requirements(genome):
         if not isdir(join(TESMALL, "genomes")):
             os.makedirs(join(TESMALL, "genomes"))
         logging.info("Downloading reference genome and annotation files...")
-        url = {"hg19": "https://www.dropbox.com/s/rkdd0bwaykd66xg/hg19.tar.gz"}
+        url = {"hg19": "http://labshare.cshl.edu/shares/mhammelllab/www-data/TEsmall/hg19.tar.gz"}
         path = join(TESMALL, "genomes")
         filepath = join(path, basename(url[genome]))
         cmd = "wget --no-check-certificate {0} -O {1}".format(url[genome], filepath)
