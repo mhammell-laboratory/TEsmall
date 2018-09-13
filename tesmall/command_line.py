@@ -11,7 +11,7 @@ from summary import *
 from version import __version__
 
 def main():
-    parser = argparse.ArgumentParser(prog="TEsmall")
+    parser = argparse.ArgumentParser(prog="tesmall")
     parser.add_argument("-a", "--adapter", metavar="STR",
         default='TGGAATTCTCGGGTGCCAAGG', help="Sequence of an adapter that was "
         "ligated to the 3' end. The adapter itself and anything that follows "

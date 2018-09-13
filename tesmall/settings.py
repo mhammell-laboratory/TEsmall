@@ -12,7 +12,10 @@ import tarfile
 #from distutils.spawn import find_executable
 # import urllib2
 
-HOME = expanduser("~")
+try:
+    HOME = os.environ["TESMALLROOT"]
+except KeyError:
+    HOME = expanduser("~")
 TESMALL = join(HOME, ".tesmall")
 WHOLE_GENOME = join(TESMALL, "genomes/{0}/sequence")
 ANNOTATION = join(TESMALL, "genomes/{0}/annotation")
