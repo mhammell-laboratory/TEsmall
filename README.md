@@ -45,7 +45,14 @@ $ python setup.py install
 	```
 	$ source deactivate
 	```
+4. If you would like to specify the directory to which the genomes TEsmall uses for annotation are downloaded and read from please use the export command as follows
 	
+	```
+	$ source activate tesmall
+	$ export TESMALLROOT=/your/desired/directory
+	$ tesmall -f Parental_1.fastq.gz DroKO_1.fastq.gz -l Parental DroKO
+	$ source deactivate
+	```
 ### For more information
 
 ```
