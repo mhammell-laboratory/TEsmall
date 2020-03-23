@@ -21,8 +21,8 @@ $ conda config --add channels bioconda
 ```
 $ git clone git@github.com:wwliao/tesmall.git
 $ cd tesmall
-$ conda env create -f environment.txt -n tesmall
-$ source activate tesmall
+$ CONDA_RESTORE_FREE_CHANNEL=1 conda env create -f environment.txt -n tesmall
+$ conda activate tesmall
 $ python setup.py install
 ```
 
@@ -31,7 +31,7 @@ $ python setup.py install
 1. Before executing TEsmall, make sure you have activated the environment
 
 	```
-	$ source activate tesmall
+	$ conda activate tesmall
 	```
 
 2. For example, you would like to apply TEsmall on 2 FASTQ files: `Parental_1.fastq.gz` and `DroKO_1.fastq.gz`
@@ -43,7 +43,7 @@ $ python setup.py install
 3. When it's done, deactivate the environment
 
 	```
-	$ source deactivate
+	$ conda deactivate
 	```
 	
 ### For more information
