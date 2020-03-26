@@ -26,7 +26,7 @@ def main():
         "discarded. (default: %(default)d)")
     parser.add_argument("-g", "--genome", metavar="STR", default="hg19",
         choices=["dm3", "mm9", "hg19"], help="Version of reference genome "
-        "(default: %(default)s)")
+        "(hg19, mm9, or dm3; default: %(default)s)")
     parser.add_argument("--maxaln", metavar="INT", type=int, default=100,
         help="Suppress all alignments for a particular read if more than INT "
         "reportable alignments exist for it. (default: %(default)s)")

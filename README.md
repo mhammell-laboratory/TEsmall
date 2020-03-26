@@ -48,9 +48,9 @@ $ python setup.py install
 4. If you would like to specify the directory to which the genomes TEsmall uses for annotation are downloaded and read from please use the export command as follows
 	
 	```
-	$ source activate tesmall
+	$ conda activate tesmall
 	$ export TESMALLROOT=/your/desired/directory
-	$ tesmall -f Parental_1.fastq.gz DroKO_1.fastq.gz -l Parental DroKO
+	$ tesmall -f Parental_1.fastq.gz DroKO_1.fastq.gz -g hg19 -l Parental DroKO
 	$ source deactivate
 	```
 ### For more information
@@ -73,7 +73,7 @@ optional arguments:
   -M INT, --maxlen INT  Discard trimmed reads that are longer than INT. Reads
                         that are too long even before adapter removal are also
                         discarded. (default: 36)
-  -g STR, --genome STR  Version of reference genome (default: hg19)
+  -g STR, --genome STR  Version of reference genome (hg19, mm9, or dm3; default: hg19)
   --maxaln INT          Suppress all alignments for a particular read if more
                         than INT reportable alignments exist for it. (default:
                         100)
