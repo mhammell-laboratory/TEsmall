@@ -51,7 +51,7 @@ $ python setup.py install
 	$ conda activate tesmall
 	$ export TESMALLROOT=/your/desired/directory
 	$ tesmall -f Parental_1.fastq.gz DroKO_1.fastq.gz -g hg19 -l Parental DroKO
-	$ source deactivate
+	$ conda deactivate
 	```
 ### For more information
 
