@@ -60,7 +60,11 @@ def get_requirements(genome):
         logging.info("Downloading reference genome and annotation files...")
         url = {"hg19": "http://labshare.cshl.edu/shares/mhammelllab/www-data/TEsmall/hg19.tar.gz",
                "dm3": "http://labshare.cshl.edu/shares/mhammelllab/www-data/TEsmall/dm3.tar.gz",
-               "mm9": "http://labshare.cshl.edu/shares/mhammelllab/www-data/TEsmall/mm9.tar.gz"}
+               "mm9": "http://labshare.cshl.edu/shares/mhammelllab/www-data/TEsmall/mm9.tar.gz",
+               "hg38": "http://labshare.cshl.edu/shares/mhammelllab/www-data/TEsmall/hg38.tar.gz",
+               "dm6": "http://labshare.cshl.edu/shares/mhammelllab/www-data/TEsmall/dm6.tar.gz",
+               "mm10": "http://labshare.cshl.edu/shares/mhammelllab/www-data/TEsmall/mm10.tar.gz",
+               }
         path = join(TESMALL, "genomes")
         filepath = join(path, basename(url[genome]))
         cmd = "wget --no-check-certificate {0} -O {1}".format(url[genome], filepath)
