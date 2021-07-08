@@ -58,7 +58,8 @@ $ python setup.py install
 	Parental DroKO --dbfolder /path/to/another/folder/
 	```
 	The files used by TEsmall will be downloaded to/access from the
-	`genomes` folder inside `/path/to/another/folder/`
+	`genomes` folder inside `/path/to/another/folder/`.
+	
 	The default location is `$HOME/TEsmall_db/`
 
 ### For more information
