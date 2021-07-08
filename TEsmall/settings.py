@@ -9,21 +9,17 @@ from os.path import basename, expanduser, isdir, isfile, join
 # import shutil
 import subprocess
 import tarfile
+import re
 #from distutils.spawn import find_executable
 # import urllib2
 
-try:
-    HOME = os.environ["TESMALLROOT"]
-except KeyError:
-    HOME = expanduser("~")
-TESMALL = join(HOME, ".tesmall")
-WHOLE_GENOME = join(TESMALL, "genomes/{0}/sequence")
-ANNOTATION = join(TESMALL, "genomes/{0}/annotation")
-BOWTIE_INDEX = join(TESMALL, "genomes/{0}/sequence/bowtie_index")
-
-def check_requirements(genome):
+def check_requirements(folder,genome):
+    WHOLE_GENOME = join(folder, "genomes/{0}/sequence")
+    ANNOTATION = join(folder, "genomes/{0}/annotation")
+    BOWTIE_INDEX = join(folder, "genomes/{0}/sequence/bowtie_index")
+    
     logging.info("Checking if reference genome and annotation files exist...")
-    if (isdir(TESMALL) and
+    if (isdir(folder) and
        isdir(WHOLE_GENOME.format(genome)) and
        isfile(join(WHOLE_GENOME.format(genome), "genome.fa")) and
        isfile(join(WHOLE_GENOME.format(genome), "genome.fa.fai")) and
@@ -53,8 +49,16 @@ def check_requirements(genome):
         return True
     return False
 
-def get_requirements(genome):
-    if not check_requirements(genome):
+def get_requirements(folder,genome):
+    if (folder is not "NULL"):
+        TESMALL = folder
+        TESMALL.replace('genomes','')
+        TESMALL = re.sub('\/\/','/',TESMALL)
+    else:
+        HOME = expanduser("~")
+        TESMALL = join(HOME, "TEsmall_db")
+
+    if not check_requirements(TESMALL,genome):
         if not isdir(join(TESMALL, "genomes")):
             os.makedirs(join(TESMALL, "genomes"))
         logging.info("Downloading reference genome and annotation files...")
@@ -74,3 +78,9 @@ def get_requirements(genome):
         tar.extractall(path)
         tar.close()
         os.remove(filepath)
+
+    WHOLE_GENOME = join(TESMALL, "genomes/{0}/sequence").format(genome)
+    ANNOTATION = join(TESMALL, "genomes/{0}/annotation").format(genome)
+    BOWTIE_INDEX = join(TESMALL, "genomes/{0}/sequence/bowtie_index").format(genome)
+    
+    return BOWTIE_INDEX, ANNOTATION

@@ -1,8 +1,12 @@
 ## TEsmall
 
-A pipeline for profiling TE-derived small RNAs
+Version 1.0.0
 
-### Install Miniconda (Linux)
+A pipeline for profiling TE-derived small RNAs.
+
+Created by Wen-Wei Liao, Kat O'Neill & Molly Hammell, March 2017
+
+### Install Miniconda 3 (Linux)
 
 ```
 $ wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
@@ -19,10 +23,10 @@ $ conda config --add channels bioconda
 ### Install TEsmall
 
 ```
-$ git clone git@github.com:wwliao/tesmall.git
-$ cd tesmall
-$ CONDA_RESTORE_FREE_CHANNEL=1 conda env create -f environment.txt -n tesmall
-$ conda activate tesmall
+$ git clone https://github.com/mhammell-laboratory/TEsmall.git
+$ cd TEsmall
+$ conda env create -f environment.yaml -n TEsmall
+$ conda activate TEsmall
 $ python setup.py install
 ```
 
@@ -31,13 +35,13 @@ $ python setup.py install
 1. Before executing TEsmall, make sure you have activated the environment
 
 	```
-	$ conda activate tesmall
+	$ conda activate TEsmall
 	```
 
 2. For example, you would like to apply TEsmall on 2 FASTQ files: `Parental_1.fastq.gz` and `DroKO_1.fastq.gz`
 
 	```
-	$ tesmall -f Parental_1.fastq.gz DroKO_1.fastq.gz -l Parental DroKO
+	$ TEsmall -f Parental_1.fastq.gz DroKO_1.fastq.gz -l Parental DroKO
 	```
 
 3. When it's done, deactivate the environment
@@ -45,21 +49,25 @@ $ python setup.py install
 	```
 	$ conda deactivate
 	```
-4. If you would like to specify the directory to which the genomes TEsmall uses for annotation are downloaded and read from please use the export command as follows
+4. If you would like to specify the directory to which the genomes
+   TEsmall uses for annotation are downloaded and read from, you can
+   specify it at runtime using the `--dbfolder` parameter
 	
 	```
-	$ conda activate tesmall
-	$ export TESMALLROOT=/your/desired/directory
-	$ tesmall -f Parental_1.fastq.gz DroKO_1.fastq.gz -g hg19 -l Parental DroKO
-	$ conda deactivate
+	$ TEsmall -f Parental_1.fastq.gz DroKO_1.fastq.gz -g hg19 -l
+	Parental DroKO --dbfolder /path/to/another/folder/
 	```
+	The files used by TEsmall will be downloaded to/access from the
+	`genomes` folder inside `/path/to/another/folder/`
+	The default location is `$HOME/TEsmall_db/`
+
 ### For more information
 
 ```
-$ tesmall -h
+$ TEsmall -h
 usage: TEsmall [-h] [-a STR] [-m INT] [-M INT] [-g STR] [--maxaln INT]
                [--mismatch INT] [-o STR [STR ...]] [-p INT] [-f STR [STR ...]]
-               [-l STR [STR ...]] [--verbose INT] [-v]
+               [-l STR [STR ...]] [--dbfolder STR] [--verbose INT] [-v]
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -89,10 +97,37 @@ optional arguments:
                         and auto-detected from the filename extension (.gz).
   -l STR [STR ...], --label STR [STR ...]
                         Unique label for each sample.
-  --verbose INT         Set verbose level. 0: only show critical message, 1:
-                        show additional warning message, 2: show process
-                        information, 3: show debug messages. DEFAULT:2
+  --dbfolder STR        Custom location of TEsmall database folder (containing the "genomes" folder). 
+						DEFAULT: $HOME/TEsmall_db/
+
+  --verbose INT         Set verbose level. 
+                        0: only show critical message
+						1: show additional warning message
+						2: show process information
+						3: show debug messages.
+						DEFAULT: 2
   -v, --version         show program's version number and exit
 ```
 
+### Copying & distribution
 
+TEsmall is part of [TEToolkit suite](http://hammelllab.labsites.cshl.edu/software/).
+
+TEsmall is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but *WITHOUT ANY WARRANTY*; without even the implied warranty of
+*MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE*.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with TEsmall.  If not, see [this website](http://www.gnu.org/licenses/).
+
+### Citation
+
+If using the software in a publication, please cite the [following](https://pubmed.ncbi.nlm.nih.gov/30349559/):
+
+O'Neill K, Liao WW, Patel A, Hammell MG. (2018) TEsmall Identifies Small RNAs Associated With Targeted Inhibitor Resistance in Melanoma. Front Genet. Oct 5;9:461.

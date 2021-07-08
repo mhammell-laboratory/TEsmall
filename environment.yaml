@@ -1,0 +1,19 @@
+name: TEsmall
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - python=3.7.6
+  - numpy
+  - scipy
+  - pandas
+  - matplotlib
+  - seaborn
+  - bokeh
+  - samtools
+  - pysam
+  - bedtools
+  - pybedtools
+  - cutadapt
+  - bowtie
