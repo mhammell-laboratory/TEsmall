@@ -52,7 +52,7 @@ def check_requirements(folder,genome):
 def get_requirements(folder,genome):
     if (folder is not "NULL"):
         TESMALL = folder
-        TESMALL.replace('genomes','')
+        TESMALL = TESMALL.replace('genomes','')
         TESMALL = re.sub('\/\/','/',TESMALL)
     else:
         HOME = expanduser("~")
