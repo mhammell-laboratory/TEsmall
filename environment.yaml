@@ -17,3 +17,4 @@ dependencies:
   - pybedtools
   - cutadapt
   - bowtie
+  - tbb=2020.2
