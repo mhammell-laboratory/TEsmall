@@ -24,9 +24,9 @@ def main():
         default=36, help="Discard trimmed reads that are longer than INT. "
         "Reads that are too long even before adapter removal are also "
         "discarded. (default: %(default)d)")
-    parser.add_argument("-g", "--genome", metavar="STR", default="hg19",
+    parser.add_argument("-g", "--genome", metavar="STR", default="hg38",
         choices=["dm3", "mm9", "hg19", "hg38", "mm10", "dm6"], help="Version of reference genome "
-        "(hg19, mm9, or dm3; default: %(default)s)")
+        "(hg38, hg19, mm10, mm9, dm6 or dm3; default: %(default)s)")
     parser.add_argument("--maxaln", metavar="INT", type=int, default=100,
         help="Suppress all alignments for a particular read if more than INT "
         "reportable alignments exist for it. (default: %(default)s)")
