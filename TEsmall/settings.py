@@ -25,6 +25,8 @@ def check_requirements(folder,genome):
        isfile(join(WHOLE_GENOME.format(genome), "genome.fa.fai")) and
        isfile(join(WHOLE_GENOME.format(genome), "rDNA.fa")) and
        isfile(join(WHOLE_GENOME.format(genome), "rDNA.fa.fai")) and
+       isfile(join(WHOLE_GENOME.format(genome), "tDNA.fa")) and
+       isfile(join(WHOLE_GENOME.format(genome), "tDNA.fa.fai")) and
        isdir(ANNOTATION.format(genome)) and
        isfile(join(ANNOTATION.format(genome), "structural_RNA.bed")) and
        isfile(join(ANNOTATION.format(genome), "miRNA.bed")) and
@@ -45,7 +47,13 @@ def check_requirements(folder,genome):
        isfile(join(BOWTIE_INDEX.format(genome), "rDNA.3.ebwt")) and
        isfile(join(BOWTIE_INDEX.format(genome), "rDNA.4.ebwt")) and
        isfile(join(BOWTIE_INDEX.format(genome), "rDNA.rev.1.ebwt")) and
-       isfile(join(BOWTIE_INDEX.format(genome), "rDNA.rev.2.ebwt"))):
+       isfile(join(BOWTIE_INDEX.format(genome), "rDNA.rev.2.ebwt")) and
+       isfile(join(BOWTIE_INDEX.format(genome), "tDNA.1.ebwt")) and
+       isfile(join(BOWTIE_INDEX.format(genome), "tDNA.2.ebwt")) and
+       isfile(join(BOWTIE_INDEX.format(genome), "tDNA.3.ebwt")) and
+       isfile(join(BOWTIE_INDEX.format(genome), "tDNA.4.ebwt")) and
+       isfile(join(BOWTIE_INDEX.format(genome), "tDNA.rev.1.ebwt")) and
+       isfile(join(BOWTIE_INDEX.format(genome), "tDNA.rev.2.ebwt"))):
         return True
     return False
 
@@ -63,11 +71,12 @@ def get_requirements(folder,genome):
             os.makedirs(join(TESMALL, "genomes"))
         logging.info("Downloading reference genome and annotation files...")
         url = {"hg19": "http://labshare.cshl.edu/shares/mhammelllab/www-data/TEsmall/hg19.tar.gz",
-               "dm3": "http://labshare.cshl.edu/shares/mhammelllab/www-data/TEsmall/dm3.tar.gz",
-               "mm9": "http://labshare.cshl.edu/shares/mhammelllab/www-data/TEsmall/mm9.tar.gz",
+#               "dm3": "http://labshare.cshl.edu/shares/mhammelllab/www-data/TEsmall/dm3.tar.gz",
+#               "mm9": "http://labshare.cshl.edu/shares/mhammelllab/www-data/TEsmall/mm9.tar.gz",
                "hg38": "http://labshare.cshl.edu/shares/mhammelllab/www-data/TEsmall/hg38.tar.gz",
                "dm6": "http://labshare.cshl.edu/shares/mhammelllab/www-data/TEsmall/dm6.tar.gz",
                "mm10": "http://labshare.cshl.edu/shares/mhammelllab/www-data/TEsmall/mm10.tar.gz",
+               "mm39": "http://labshare.cshl.edu/shares/mhammelllab/www-data/TEsmall/mm39.tar.gz",
                }
         path = join(TESMALL, "genomes")
         filepath = join(path, basename(url[genome]))

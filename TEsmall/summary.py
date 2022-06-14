@@ -258,7 +258,7 @@ def get_stat(prefix, maxaln):
                 stat["Number of reads"].append(un_reads)
                 stat["Proportion"].append(un_reads/rm_reads)
 
-    df = pd.read_table("{0}.anno".format(prefix), usecols=["rid"])
+    df = pd.read_csv("{0}.anno".format(prefix), sep="\t", usecols=["rid"])
     anno_reads = len(df.rid.unique())
     stat["Statistics"].append("Annotated reads of aligned reads")
     stat["Number of reads"].append(anno_reads)
@@ -271,7 +271,7 @@ def output_components(prefix, order, maxaln):
     comp = "{0}.comp".format(prefix)
 
     def plot_read_dist(rinfo):
-        df = pd.read_table(rinfo)
+        df = pd.read_csv(rinfo, sep="\t")
         data = df[['length', 'mapper', 'count']].groupby(['length', 'mapper']).count()
         data = data.apply(lambda s: s/data.sum()*100, axis=1).reset_index()
         unique = data.loc[data['mapper'] == "unique"]
@@ -300,7 +300,7 @@ def output_components(prefix, order, maxaln):
 
     rdist = plot_read_dist(rinfo)
     
-    df = pd.read_table(comp, index_col=0)
+    df = pd.read_csv(comp, sep="\t", index_col=0)
     total = df.sum()
     total = total*100/total.sum()
     df = df.apply(lambda s: s*100/s.sum(), axis=1)
