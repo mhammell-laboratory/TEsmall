@@ -75,6 +75,8 @@ def calc_abundance(em_in):
         count_out = pd.concat([count, em_count, cca_count], sort=True, ignore_index=True)
         count_out = count_out.loc[count_out[root] > 0.1, :]  # filter species with 0 counts
         count_out = count_out[['fid', 'ftype', root]]
+        count_out = count_out.groupby(['fid','ftype'], as_index = False)[root].sum()
+        count_out = count_out[['fid', 'ftype', root]]
         #count_out.to_csv("test_sample_df_final_{0}.txt".format(root), sep="\t", na_rep=0, float_format="%.0f", index=False)
         dfs.append(count_out)
 
