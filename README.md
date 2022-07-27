@@ -1,6 +1,6 @@
 ## TEsmall
 
-Version 2.0.0
+Version 2.0.1
 
 A pipeline for profiling TE-derived small RNAs.
 
