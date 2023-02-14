@@ -84,7 +84,7 @@ optional arguments:
   -M INT, --maxlen INT  Discard trimmed reads that are longer than INT. Reads
                         that are too long even before adapter removal are also
                         discarded. (default: 36)
-  -g STR, --genome STR  Version of reference genome (hg38, hg19, mm10, mm39 or dm6; default: hg38)
+  -g STR, --genome STR  Version of reference genome (hg38, hg19, mm10, mm39 dm6 or GRCz11; default: hg38)
   --maxaln INT          Suppress all alignments for a particular read if more
                         than INT reportable alignments exist for it. (default:
                         100)
