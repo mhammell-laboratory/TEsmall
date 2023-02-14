@@ -4,7 +4,8 @@ Version 2.0.1
 
 A pipeline for profiling TE-derived small RNAs.
 
-Created by Wen-Wei Liao, Kat O'Neill & Molly Hammell, March 2017
+Created by Wen-Wei Liao, Kat O'Neill & Molly Gale Hammell, March 2017
+Contact: Oliver Tam (tam@cshl.edu) or Molly Gale Hammell (mhammell@cshl.edu)
 
 ### Install Miniconda 3 (Linux)
 
