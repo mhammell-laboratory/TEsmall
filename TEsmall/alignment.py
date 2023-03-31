@@ -47,9 +47,9 @@ def map_bestone_reads(fastq, ebwt, mm=0):
     unfile = "{0}.rm_rRNA.fastq".format(prefix)
     command = 'bowtie --chunkmbs 1024 -k 1 --best -v {0} -S --un "{1}" "{2}" "{3}" 2> '\
               '"{4}" | samtools view -F 4 -buS - 2>> "{4}" | samtools sort -n '\
-              '-o "{5}.bam" - 2>> "{4}"'
+              '-o "{5}.rRNA.bam" - 2>> "{4}"'
     command = command.format(mm, unfile, ebwt, fastq, logfile, prefix)
     logging.info("Removing rRNA-derived reads...")
     subprocess.call(command, shell=True)
-    return "{0}.bam".format(prefix), unfile
+    return "{0}.rRNA.bam".format(prefix), unfile
 
