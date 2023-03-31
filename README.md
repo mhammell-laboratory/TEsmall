@@ -168,7 +168,7 @@ parameter the user provided.
 #### Annotation output
 ```
 [label].anno                      -   Annotation of aligned reads that are not tRF
-[label].3trf.struct.mapper.anno   -   tRF that annotated to structural RNA (e.g. tRNA)
+[label].3trf.struc.mapper.anno    -   tRF that annotated to structural RNA (e.g. tRNA)
 [label].3trf.TE.mapper.anno       -   tRF that annotated to TE
 [label].comp                      -   Length distribution of reads based on annotation (version 2.0.2 or earlier)
 [label].anno.rlen.info            -   Length distribution of reads based on annotation (version 2.0.2 or earlier)
