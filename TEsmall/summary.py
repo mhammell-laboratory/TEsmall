@@ -202,7 +202,7 @@ footer = """
 def get_read_info(multibam):
     root = os.path.splitext(os.path.basename(multibam))[0]
     root = os.path.splitext(root)[0]
-    output = "{0}.rinfo".format(root)
+    output = "{0}.aligned.rinfo".format(root)
     with open(output, "w") as outfile:
         outfile.write("id\tlength\tcount\tmapper\n")
         fname = multibam
@@ -235,7 +235,7 @@ def get_stat(prefix, maxaln):
                 stat["Statistics"].append("After trimming adapters")
                 stat["Number of reads"].append(trimmed_reads)
                 stat["Proportion"].append(None)
-    with open("{0}.log".format(prefix)) as infile:
+    with open("{0}.genome.log".format(prefix)) as infile:
         for line in infile:
             if "# reads processed:" in line:
                 rm_reads = int(line.strip().split()[-1])
@@ -267,8 +267,8 @@ def get_stat(prefix, maxaln):
     return stat
 
 def output_components(prefix, order, maxaln):
-    rinfo = "{0}.rinfo".format(prefix)
-    comp = "{0}.comp".format(prefix)
+    rinfo = "{0}.aligned.rinfo".format(prefix)
+    comp = "{0}.anno.rlen.info".format(prefix)
 
     def plot_read_dist(rinfo):
         df = pd.read_csv(rinfo, sep="\t")

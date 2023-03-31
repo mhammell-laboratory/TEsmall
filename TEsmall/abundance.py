@@ -18,7 +18,7 @@ def calc_composition(anno_list, cca_anno_list):
                 df = df.groupby(["rlen", "ftype"]).rid.nunique()
                 df = df.unstack("rlen")
         root = splitext(anno)[0]
-        outfile = "{0}.comp".format(root)
+        outfile = "{0}.anno.rlen.info".format(root)
         df.T.to_csv(outfile, sep="\t", na_rep=0, float_format="%.0f")  # df.T is a transpose
 
 # for count table

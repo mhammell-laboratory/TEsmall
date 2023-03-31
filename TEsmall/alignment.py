@@ -28,16 +28,16 @@ def map_multi_reads(fastq, ebwt, maxaln=100, mm=0):
     prefix = splitext(basename(fastq))[0]
     prefix = splitext(prefix)[0]
     prefix = splitext(prefix)[0]
-    logfile = "{0}.log".format(prefix)
+    logfile = "{0}.genome.log".format(prefix)
     unfile = "{0}.unaligned.fastq".format(prefix)
     exfile = "{0}.exceeded.fastq".format(prefix)
     command = 'bowtie --chunkmbs 1024 -a -m {0} --best --strata -v {1} -S '\
               '--un "{2}" --max "{3}" "{4}" "{5}" 2> "{6}" | samtools view -F 4 -buS - '\
-              '2>> "{6}" | samtools sort -n -o "{7}.multi.bam" - 2>> "{6}"'
+              '2>> "{6}" | samtools sort -n -o "{7}.genome.bam" - 2>> "{6}"'
     command = command.format(maxaln, mm, unfile, exfile, ebwt, fastq, logfile, prefix)
     logging.info("Aligning reads to reference sequences...")
     subprocess.call(command, shell=True)
-    return "{0}.multi.bam".format(prefix)
+    return "{0}.genome.bam".format(prefix)
 
 def map_bestone_reads(fastq, ebwt, mm=0):
     """Align short reads to the reference genome in bestone mode."""
