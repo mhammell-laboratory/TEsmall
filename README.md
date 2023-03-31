@@ -156,7 +156,7 @@ parameter the user provided.
 [Schorn et al. 2017](https://www.cell.com/cell/fulltext/S0092-8674(17)30696-7)
 ```
 [label].cca.fa                    -   FASTA file containing aligned reads terminating with CCA, with CCA tail cleaved
-[label].3trf.log                   -   Bowtie log for CCA-trimmed reads aligning to tRNA
+[label].3trf.log                  -   Bowtie log for CCA-trimmed reads aligning to tRNA
 [label].unaligned.fastq           -   FASTA fille containing CCA-trimmed reads that failed to align (version 2.0.2 or earlier)
 [label].unaligned.cca.fa          -   FASTA fille containing CCA-trimmed reads that failed to align
 [label].tRNA.bam                  -   BAM output for CCA-trimmed reads that aligned to tRNA
