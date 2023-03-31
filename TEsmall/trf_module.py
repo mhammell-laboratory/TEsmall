@@ -47,7 +47,7 @@ def map_CCA(cca_fasta, ebwt, multibam, maxaln=50, mm=0):
     prefix = os.path.splitext(os.path.basename(multibam))[0]
     prefix = os.path.splitext(prefix)[0]
     prefix = os.path.splitext(prefix)[0]
-    logfile = "{0}.3trf.log".format(prefix)
+    logfile = "{0}.tRNA.log".format(prefix)
     unfile = "{0}.unaligned.cca.fa".format(prefix)
     command = 'bowtie -f --chunkmbs 1024 -a -m {0} --best --strata -v {1} -S '\
               '--un "{2}" "{3}" "{4}" 2> "{5}" | samtools view -F 4 -buS - '\
