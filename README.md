@@ -133,7 +133,7 @@ parameter the user provided.
 [label].cutadapt1.log     -   Cutadapt log from 3' adapter trimming
 [label].trimmed2.fastq    -   FASTQ file after 3' & 5' adapter trimming
 [label].cutadapt2.log     -   Cutadapt log from 5' adapter trimming
-[label].bam               -   BAM output for reads that aligned to rRNA (version 2.0.2 or earlier)
+[label].bam               -   BAM output for reads that aligned to rRNA (in older versions)
 [label].rRNA.bam          -   BAM output for reads that aligned to rRNA
 [label].rRNA.log          -   Bowtie log for rRNA mapping
 [label].rm_rRNA.fastq     -   FASTQ file depleted for rRNA reads
@@ -142,13 +142,13 @@ parameter the user provided.
 
 #### Genome alignment output
 ```
-[label].log               -   Bowtie log for genome alignment (version 2.0.2 or earlier)
+[label].log               -   Bowtie log for genome alignment (in older versions)
 [label].genome.log        -   Bowtie log for genome alignment
-[label].unaligned.fastq   -   FASTQ containing reads that failed to align to genome (version 2.0.3 or later)
+[label].unaligned.fastq   -   FASTQ containing reads that failed to align to genome
 [label].exceeded.fastq    -   FASTQ containing reads that aligned too many times to genome
-[label].rinfo             -   Length & alignment counts for each aligned read (version 2.0.2 or earlier)
+[label].rinfo             -   Length & alignment counts for each aligned read (in older versions)
 [label].aligned.rinfo     -   Length & alignment counts for each aligned read
-[label].multi.bam         -   BAM output for reads aligned to genome (version 2.0.2 or earlier)
+[label].multi.bam         -   BAM output for reads aligned to genome (in older versions)
 [label].genome.bam        -   BAM output for reads aligned to genome
 ```
 
@@ -157,9 +157,8 @@ parameter the user provided.
 ```
 [label].cca.fa                    -   FASTA file containing aligned reads terminating with CCA, with CCA tail cleaved
 [label].tRNA.bam                  -   BAM output for CCA-trimmed reads that aligned to tRNA
-[label].3trf.log                  -   Bowtie log for CCA-trimmed reads aligning to tRNA (version 2.0.2 or earlier)
+[label].3trf.log                  -   Bowtie log for CCA-trimmed reads aligning to tRNA (in older version)
 [label].tRNA.log                  -   Bowtie log for CCA-trimmed reads aligning to tRNA
-[label].unaligned.fastq           -   FASTA file containing CCA-trimmed reads that failed to align (version 2.0.2 or earlier)
 [label].unaligned.cca.fa          -   FASTA file containing CCA-trimmed reads that failed to align
 [label].trna_for_intersect.bam    -   BAM file of CCA-trimmed reads that aligned to tRNA, converted to genomic coordinates
 [label].3trf_free.bam             -   BAM file of reads aligned to genome that are not tRF
@@ -171,7 +170,7 @@ parameter the user provided.
 [label].anno                      -   Annotation of aligned reads that are not tRF
 [label].3trf.struc.mapper.anno    -   tRF that annotated to structural RNA (e.g. tRNA)
 [label].3trf.TE.mapper.anno       -   tRF that annotated to TE
-[label].comp                      -   Length distribution of reads based on annotation (version 2.0.2 or earlier)
+[label].comp                      -   Length distribution of reads based on annotation (in older versions)
 [label].anno.rlen.info            -   Length distribution of reads based on annotation
 [label].bedgraph                  -   BEDgraph of annotated reads weighted by EM
 ```
