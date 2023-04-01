@@ -157,7 +157,7 @@ parameter the user provided.
 ```
 [label].cca.fa                    -   FASTA file containing aligned reads terminating with CCA, with CCA tail cleaved
 [label].tRNA.bam                  -   BAM output for CCA-trimmed reads that aligned to tRNA
-[label].3trf.log                  -   Bowtie log for CCA-trimmed reads aligning to tRNA (in older version)
+[label].3trf.log                  -   Bowtie log for CCA-trimmed reads aligning to tRNA (in older versions)
 [label].tRNA.log                  -   Bowtie log for CCA-trimmed reads aligning to tRNA
 [label].unaligned.cca.fa          -   FASTA file containing CCA-trimmed reads that failed to align
 [label].trna_for_intersect.bam    -   BAM file of CCA-trimmed reads that aligned to tRNA, converted to genomic coordinates
