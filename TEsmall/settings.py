@@ -6,6 +6,7 @@ Check the requirements
 import logging
 import os
 from os.path import basename, expanduser, isdir, isfile, join
+import sys
 # import shutil
 import subprocess
 import tarfile
@@ -82,6 +83,10 @@ def get_requirements(folder,genome):
                "GRCz11": "http://labshare.cshl.edu/shares/mhammelllab/www-data/TEsmall/GRCz11.tar.gz", 
                "T2Tv2": "http://labshare.cshl.edu/shares/mhammelllab/www-data/TEsmall/T2Tv2.tar.gz",
                }
+        if genome not in url:
+              logging.info("Reference genome not available for download")
+              logging.info("Please contact mghcompbio@gmail.com for info")
+              sys.exit(1)
         path = join(TESMALL, "genomes")
         filepath = join(path, basename(url[genome]))
         cmd = "wget --no-check-certificate {0} -O {1}".format(url[genome], filepath)
