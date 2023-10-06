@@ -278,9 +278,14 @@ def output_components(prefix, order, maxaln):
         multi = data.loc[data['mapper'] == "multi"]
         data = unique.set_index('length').join(multi.set_index('length'),how='outer',rsuffix="_multi")
         data = data[['count','count_multi']]
-        p = figure(x_range=(min(list(data.index)),max(list(data.index))),
+        if bokeh_version < "3.0.0":
+            p = figure(x_range=(min(list(data.index)),max(list(data.index))),
                    plot_width=500,
                    plot_height=400)
+        else :
+            p = figure(x_range=(min(list(data.index)),max(list(data.index))),
+                   width=500,
+                   height=400)
         p.vbar_stack(['count','count_multi'],
                      source = data,
                      x = 'length',
@@ -307,10 +312,16 @@ def output_components(prefix, order, maxaln):
     ftypes = list(df.columns)
     df = df.reset_index()
     colors = sns.color_palette("hls", len(ftypes)).as_hex()
-    bar = figure(x_range=rdist.x_range,
+    if bokeh_version < "3.0.0":
+        bar = figure(x_range=rdist.x_range,
                  y_range = (0, 100),
                  plot_width=500,
                  plot_height=400)
+    else:
+        bar = figure(x_range=rdist.x_range,
+                 y_range = (0, 100),
+                 width=500,
+                 height=400)
     bar.vbar_stack(ftypes,
                    x='rlen',
                    color=colors,
