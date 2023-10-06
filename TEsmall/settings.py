@@ -60,7 +60,7 @@ def check_requirements(folder,genome):
     return False
 
 def get_requirements(folder,genome):
-    if (folder is not "NULL"):
+    if (folder != "NULL"):
         TESMALL = folder
         TESMALL = TESMALL.replace('genomes','')
         TESMALL = re.sub('\/\/','/',TESMALL)
@@ -80,6 +80,7 @@ def get_requirements(folder,genome):
                "mm10": "http://labshare.cshl.edu/shares/mhammelllab/www-data/TEsmall/mm10.tar.gz",
                "mm39": "http://labshare.cshl.edu/shares/mhammelllab/www-data/TEsmall/mm39.tar.gz",
                "GRCz11": "http://labshare.cshl.edu/shares/mhammelllab/www-data/TEsmall/GRCz11.tar.gz", 
+               "T2Tv2": "http://labshare.cshl.edu/shares/mhammelllab/www-data/TEsmall/T2Tv2.tar.gz",
                }
         path = join(TESMALL, "genomes")
         filepath = join(path, basename(url[genome]))

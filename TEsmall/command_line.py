@@ -26,8 +26,8 @@ def main():
         "Reads that are too long even before adapter removal are also "
         "discarded. (default: %(default)d)")
     parser.add_argument("-g", "--genome", metavar="STR", default="hg38",
-        choices=["hg19", "hg38", "mm10", "mm39", "dm6", "GRCz11"], help="Version of reference genome "
-        "(hg38, hg19, mm39, mm10 dm6 or GRCz11; default: %(default)s)")
+        choices=["hg19", "hg38", "mm10", "mm39", "dm6", "GRCz11", "T2Tv2"], help="Version of reference genome "
+        "(hg38, hg19, T2Tv2, mm39, mm10 dm6 or GRCz11; default: %(default)s)")
     parser.add_argument("--maxaln", metavar="INT", type=int, default=100,
         help="Suppress all alignments for a particular read if more than INT "
         "reportable alignments exist for it. (default: %(default)s)")
