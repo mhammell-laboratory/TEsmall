@@ -7,7 +7,7 @@ COPY . /home/genomics
 RUN cd /home/genomics
 
 RUN apt-get --assume-yes update \
-               && apt-gel --assume-yes upgrade
+               && apt-get --assume-yes upgrade
 
 #MAIN
 
