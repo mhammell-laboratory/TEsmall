@@ -54,7 +54,7 @@ def main():
     if not args.fastq:
         parser.print_help(sys.stderr)
         sys.exit(1)
-    
+
     logging.basicConfig(level=(4 - args.verbose) * 10,
         format="%(asctime)s %(levelname)s %(message)s",
         stream=sys.stderr, filemode="w")

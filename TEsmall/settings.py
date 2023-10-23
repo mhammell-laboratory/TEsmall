@@ -18,7 +18,7 @@ def check_requirements(folder,genome):
     WHOLE_GENOME = join(folder, "genomes/{0}/sequence")
     ANNOTATION = join(folder, "genomes/{0}/annotation")
     BOWTIE_INDEX = join(folder, "genomes/{0}/sequence/bowtie_index")
-    
+
     logging.info("Checking if reference genome and annotation files exist...")
     if (isdir(folder) and
         isdir(WHOLE_GENOME.format(genome)) and
@@ -57,7 +57,7 @@ def check_requirements(folder,genome):
         isfile(join(BOWTIE_INDEX.format(genome), "tDNA.rev.2.ebwt"))) :
         logging.info("Genome and annotation files present")
         return True
-                
+
     return False
 
 def get_requirements(folder,genome):
@@ -80,7 +80,7 @@ def get_requirements(folder,genome):
                "dm6": "http://labshare.cshl.edu/shares/mhammelllab/www-data/TEsmall/dm6.tar.gz",
                "mm10": "http://labshare.cshl.edu/shares/mhammelllab/www-data/TEsmall/mm10.tar.gz",
                "mm39": "http://labshare.cshl.edu/shares/mhammelllab/www-data/TEsmall/mm39.tar.gz",
-               "GRCz11": "http://labshare.cshl.edu/shares/mhammelllab/www-data/TEsmall/GRCz11.tar.gz", 
+               "GRCz11": "http://labshare.cshl.edu/shares/mhammelllab/www-data/TEsmall/GRCz11.tar.gz",
                "T2Tv2": "http://labshare.cshl.edu/shares/mhammelllab/www-data/TEsmall/T2Tv2.tar.gz",
                }
         if genome not in url:
@@ -100,5 +100,5 @@ def get_requirements(folder,genome):
     WHOLE_GENOME = join(TESMALL, "genomes/{0}/sequence").format(genome)
     ANNOTATION = join(TESMALL, "genomes/{0}/annotation").format(genome)
     BOWTIE_INDEX = join(TESMALL, "genomes/{0}/sequence/bowtie_index").format(genome)
-    
+
     return BOWTIE_INDEX, ANNOTATION

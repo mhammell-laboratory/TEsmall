@@ -304,7 +304,7 @@ def output_components(prefix, order, maxaln):
         return p
 
     rdist = plot_read_dist(rinfo)
-    
+
     df = pd.read_csv(comp, sep="\t", index_col=0)
     total = df.sum()
     total = total*100/total.sum()

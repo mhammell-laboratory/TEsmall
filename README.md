@@ -100,10 +100,10 @@ optional arguments:
                         and auto-detected from the filename extension (.gz).
   -l STR [STR ...], --label STR [STR ...]
                         Unique label for each sample.
-  --dbfolder STR        Custom location of TEsmall database folder (containing the "genomes" folder). 
+  --dbfolder STR        Custom location of TEsmall database folder (containing the "genomes" folder).
 						DEFAULT: $HOME/TEsmall_db/
 
-  --verbose INT         Set verbose level. 
+  --verbose INT         Set verbose level.
                         0: only show critical message
 						1: show additional warning message
 						2: show process information
@@ -152,7 +152,7 @@ parameter the user provided.
 [label].genome.bam        -   BAM output for reads aligned to genome
 ```
 
-#### Identifying tRNA fragment (tRF) 
+#### Identifying tRNA fragment (tRF)
 [Schorn et al. 2017](https://www.cell.com/cell/fulltext/S0092-8674(17)30696-7)
 ```
 [label].cca.fa                    -   FASTA file containing aligned reads terminating with CCA, with CCA tail cleaved
