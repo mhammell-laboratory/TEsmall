@@ -24,4 +24,4 @@ RUN echo -e "source /opt/conda/etc/profile.d/conda.sh" > /home/genomics/setup.sh
 
 ENV LC_ALL C
 ENV LANG C
-ENV BASH_ENV /home/genomics/setup.sh
+ENV PATH /opt/conda/envs/TEsmall/bin:$PATH
