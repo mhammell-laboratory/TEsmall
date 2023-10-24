@@ -11,7 +11,7 @@ RUN apt-get --assume-yes update \
 
 #MAIN
 
-RUN conda env update -n base -f cloud_environment.yaml \
+RUN conda env update -n base -f environment.yaml \
     && conda clean --all --yes \
     && python setup.py install
 
