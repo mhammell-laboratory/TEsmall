@@ -12,8 +12,11 @@ RUN apt-get --assume-yes update \
 #MAIN
 
 RUN conda env create -f environment.yaml \
-    && conda clean --all --yes \
-    && python setup.py install
+    && conda clean --all --yes
+
+SHELL ["conda", "run", "-n", "TEsmall", "/bin/bash", "-c"]
+RUN python setup.py install
+
 RUN echo -e "source /opt/conda/etc/profile.d/conda.sh" > /home/genomics/setup.sh
     && echo "conda activate TEsmall" >> /home/genomics/setup.sh
 
@@ -21,4 +24,4 @@ RUN echo -e "source /opt/conda/etc/profile.d/conda.sh" > /home/genomics/setup.sh
 
 ENV LC_ALL C
 ENV LANG C
-ENV /home/genomics/setup.sh
+ENV BASH_ENV /home/genomics/setup.sh
