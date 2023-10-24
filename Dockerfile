@@ -12,7 +12,7 @@ RUN apt-get --assume-yes update \
 #MAIN
 
 RUN conda create -f cloud_environment.yaml \
-&& conda clean --all --yes \ 
+&& conda clean --all --yes \
 && echo -e "#! /bin/bash\n\n# script to activate conda environment" > ~/.bashrc \
 && echo "export PS1='Docker> '" >> ~/.bashrc \
 && echo -e "\nconda activate TEsmall" >> ~/.bashrc
