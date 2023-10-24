@@ -15,7 +15,7 @@ RUN conda env create -f cloud_environment.yaml \
     && conda clean --all --yes
 
 SHELL ["conda", "run", "-n", "TEsmall", "/bin/bash", "-c"]
-RUN python setup.py install
+RUN python setup.py install \
     && rm -rf /var/cache/apk/* \
     && rm -rf /tmp/*
 
