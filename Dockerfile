@@ -11,7 +11,7 @@ RUN apt-get --assume-yes update \
 
 #MAIN
 
-RUN conda env create -f environment.yaml \
+RUN conda env create -f cloud_environment.yaml \
     && conda clean --all --yes
 
 SHELL ["conda", "run", "-n", "TEsmall", "/bin/bash", "-c"]
