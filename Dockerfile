@@ -19,11 +19,9 @@ RUN python setup.py install \
     && rm -rf /var/cache/apk/* \
     && rm -rf /tmp/*
 
-RUN source /opt/conda/etc/profile.d/conda.sh \
-    && conda activate TEsmall
-
 #ENVIRONMENT
 
 ENV LC_ALL C
 ENV LANG C
-#ENV PATH /opt/conda/envs/TEsmall/bin:$PATH
+ENV PATH /opt/conda/envs/TEsmall/bin:$PATH
+
