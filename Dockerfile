@@ -17,7 +17,7 @@ RUN conda env create -f environment.yaml \
 SHELL ["conda", "run", "-n", "TEsmall", "/bin/bash", "-c"]
 RUN python setup.py install
 
-RUN echo -e "source /opt/conda/etc/profile.d/conda.sh" > /home/genomics/setup.sh
+RUN echo -e "source /opt/conda/etc/profile.d/conda.sh" > /home/genomics/setup.sh \
     && echo "conda activate TEsmall" >> /home/genomics/setup.sh
 
 #ENVIRONMENT
