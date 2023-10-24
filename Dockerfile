@@ -11,11 +11,14 @@ RUN apt-get --assume-yes update \
 
 #MAIN
 
-RUN conda env update -n base -f environment.yaml \
+RUN conda env create -f environment.yaml \
     && conda clean --all --yes \
     && python setup.py install
+RUN echo -e "source /opt/conda/etc/profile.d/conda.sh" > /home/genomics/setup.sh
+    && echo "conda activate TEsmall" >> /home/genomics/setup.sh
 
 #ENVIRONMENT
 
 ENV LC_ALL C
 ENV LANG C
+ENV /home/genomics/setup.sh
