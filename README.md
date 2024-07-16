@@ -177,7 +177,7 @@ parameter the user provided.
 
 ### Copying & distribution
 
-TEsmall is part of [TEToolkit suite](http://hammelllab.labsites.cshl.edu/software/).
+TEsmall is part of [TEToolkit suite](https://www.mghlab.org/software).
 
 TEsmall is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
