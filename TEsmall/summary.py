@@ -259,10 +259,16 @@ def get_stat(prefix, maxaln):
                 stat["Proportion"].append(un_reads/rm_reads)
 
     df = pd.read_csv("{0}.anno".format(prefix), sep="\t", usecols=["rid"])
-    anno_reads = len(df.rid.unique())
-    stat["Statistics"].append("Annotated reads of aligned reads")
+    annot_reads = len(df.rid.unique()
+    stat["Statistics"].append("Aligned reads annotated")
     stat["Number of reads"].append(anno_reads)
-    stat["Proportion"].append(anno_reads/up_reads)
+    stat["Proportion"].append(anno_reads/rm_reads)
+    df = df.append(pd.read_csv("{0}.3trf.TE.mapper.anno".format(prefix), sep="\t", usecols=["rid"]), ignore_index=True)
+    df = df.append(pd.read_csv("{0}.3trf.struc.mapper.anno".format(prefix), sep="\t", usecols=["rid"]), ignore_index=True)
+    anno_reads = len(df.rid.unique())
+    stat["Statistics"].append("Annotated reads (including 3' tRF)")
+    stat["Number of reads"].append(anno_reads)
+    stat["Proportion"].append(anno_reads/rm_reads)
 
     return stat
 

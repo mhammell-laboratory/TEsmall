@@ -196,7 +196,7 @@ def merge_weight_dict(EM_output, em_index):
     return count_dic
 
 
-def make_list_for_bed_grph(te_s_weights, te_s_read_ref, te_as_weights, te_as_read_ref, mir_weights, mir_read_ref, array_count):
+def make_list_for_bed_grph(te_s_weights, te_s_read_ref, te_as_weights, te_as_read_ref, array_count):
     idx = array_count - 1
     result_array = np.empty((array_count, 4), dtype='object')
     x = 'sense_TE'
@@ -218,13 +218,13 @@ def make_list_for_bed_grph(te_s_weights, te_s_read_ref, te_as_weights, te_as_rea
             result_array[idx] = [y, k, i, read_weight]
             idx -= 1
             # result_array = np.append(result_array, [q], axis=0)
-    for k, v in list(mir_read_ref.items()):
-        read_num = len(v)
-        weight_feature = mir_weights[k]
-        read_weight = weight_feature / read_num
-        for i in mir_read_ref[k]:
-            result_array[idx] = [z, k, i, read_weight]
-            idx -= 1
+#    for k, v in list(mir_read_ref.items()):
+#        read_num = len(v)
+#        weight_feature = mir_weights[k]
+#        read_weight = weight_feature / read_num
+#        for i in mir_read_ref[k]:
+#            result_array[idx] = [z, k, i, read_weight]
+#            idx -= 1
             # result_array = np.append(result_array, [q], axis=0)
     weight_df = pd.DataFrame(result_array, columns=['ftype', 'fid', 'rid', 'weight'])
     return weight_df
@@ -233,19 +233,22 @@ def make_list_for_bed_grph(te_s_weights, te_s_read_ref, te_as_weights, te_as_rea
 def handle_annotation_EM(trf_free_multi, annot_dir, order):
     anno_fi, te_s_read_list, te_s_index, te_s_len, te_as_read_list, te_as_index, te_as_len, mir_read_list, mir_index, mir_len, te_s_ref_dic, te_as_ref_dic, mir_ref_dic, array_count = annotate_reads(trf_free_multi, annot_dir, order)
     sys.stderr.write("Annotation done. Fixing counts for EM\n")
-    mir_uniquecs, mir_multics, mir_multi_list = getcountsEM(mir_read_list, mir_index)
-    te_as_uniquecs, te_as_multics, te_as_multi_list = getcountsEM(te_as_read_list, te_as_index)
-    te_s_uniquecs, te_s_multics, te_s_multi_list = getcountsEM(te_s_read_list, te_s_index)
+#    mir_uniquecs, mir_multics, mir_multi_list = getcountsEM(mir_read_list, mir_index)
+#    te_as_uniquecs, te_as_multics, te_as_multi_list = getcountsEM(te_as_read_list, te_as_index)
+#    te_s_uniquecs, te_s_multics, te_s_multi_list = getcountsEM(te_s_read_list, te_s_index)
     # make function to not hardcode average read length to 20
-    EM_te_as_multi = EMestimate(te_as_len, te_as_multi_list, te_as_index, te_as_uniquecs, te_as_multics, 100, 20)
-    EM_te_s_multi = EMestimate(te_s_len, te_s_multi_list, te_s_index, te_s_uniquecs, te_s_multics, 100, 20)
-    EM_mir_multi = EMestimate(mir_len, mir_multi_list, mir_index, mir_uniquecs, mir_multics, 100, 20)
-    EM_te_as = list(map(operator.add, te_as_uniquecs, EM_te_as_multi))
-    EM_te_s = list(map(operator.add, te_s_uniquecs, EM_te_s_multi))
-    EM_mir = list(map(operator.add, mir_uniquecs, EM_mir_multi))
-    sys.stderr.write("EM done. Matching weights to features\n")
-    mir_weights = merge_weight_dict(EM_mir, mir_index)
-    te_s_weights = merge_weight_dict(EM_te_s, te_s_index)
-    te_as_weights = merge_weight_dict(EM_te_as, te_as_index)
-    em_weight_df_for_bed = make_list_for_bed_grph(te_s_weights, te_s_ref_dic, te_as_weights, te_as_ref_dic, mir_weights, mir_ref_dic, array_count)
-    return anno_fi, em_weight_df_for_bed, mir_weights, te_s_weights, te_as_weights
+#    EM_te_as_multi = EMestimate(te_as_len, te_as_multi_list, te_as_index, te_as_uniquecs, te_as_multics, 100, 20)
+#    EM_te_s_multi = EMestimate(te_s_len, te_s_multi_list, te_s_index, te_s_uniquecs, te_s_multics, 100, 20)
+#    EM_mir_multi = EMestimate(mir_len, mir_multi_list, mir_index, mir_uniquecs, mir_multics, 100, 20)
+#    EM_te_as = list(map(operator.add, te_as_uniquecs, EM_te_as_multi))
+#    EM_te_s = list(map(operator.add, te_s_uniquecs, EM_te_s_multi))
+#    EM_mir = list(map(operator.add, mir_uniquecs, EM_mir_multi))
+#    sys.stderr.write("EM done. Matching weights to features\n")
+#    mir_weights = merge_weight_dict(EM_mir, mir_index)
+#    te_s_weights = merge_weight_dict(EM_te_s, te_s_index)
+#    te_as_weights = merge_weight_dict(EM_te_as, te_as_index)
+#    em_weight_df_for_bed = make_list_for_bed_grph(te_s_weights, te_s_ref_dic, te_as_weights, te_as_ref_dic, mir_weights, mir_ref_dic, array_count)
+#    em_weight_df_for_bed = make_list_for_bed_grph(te_s_weights, te_s_ref_dic, te_as_weights, te_as_ref_dic, array_count)
+#    return anno_fi, em_weight_df_for_bed, mir_weights, te_s_weights, te_as_weights
+#    return anno_fi, em_weight_df_for_bed, te_s_weights, te_as_weights
+    return anno_fi
