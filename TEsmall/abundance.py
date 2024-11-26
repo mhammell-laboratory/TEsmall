@@ -52,7 +52,7 @@ def calc_abundance(em_in):
         root = splitext(anno)[0]
         # create data frames from annotation files (1/n) and EM weighted dictionaries
         df = pd.read_csv(anno, sep="\t", usecols=["rid", "ftype", "fid"])  # get necessary columns
-        df = df[(df["ftype"] != "anti_TE") & (df["ftype"] != "sense_TE")]  # filter out EM treated categories
+#        df = df[(df["ftype"] != "anti_TE") & (df["ftype"] != "sense_TE")]  # filter out EM treated categories
         rweight = 1 / df.groupby("rid").fid.nunique()  # calculate 1/n weight per read
         ftable = df.groupby(["ftype", "fid"]).rid.unique()  # group on sRNA id in class
         count = ftable.apply(lambda l: round(sum([rweight[s] for s in l])))  # hierarchecal df with ftype and fid (fid contains fid and weight tab delim)
