@@ -81,7 +81,7 @@ def calc_abundance(em_in):
         count_out = count_out[['fid', 'ftype', root]]
         count_out = count_out.groupby(['fid','ftype'], as_index = False)[root].sum()
         count_out = count_out[['fid', 'ftype', root]]
-        count_out.to_csv("test_sample_df_final_{0}.txt".format(root), sep="\t", na_rep=0, float_format="%.0f", index=False)
+#        count_out.to_csv("test_sample_df_final_{0}.txt".format(root), sep="\t", na_rep=0, float_format="%.0f", index=False)
         dfs.append(count_out)
 
         # make a bedgraph file too
