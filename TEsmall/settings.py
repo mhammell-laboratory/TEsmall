@@ -73,23 +73,27 @@ def get_requirements(folder,genome):
         if not isdir(join(TESMALL, "genomes")):
             os.makedirs(join(TESMALL, "genomes"))
         logging.info("Downloading reference genome and annotation files...")
-        url = {"hg19": "http://labshare.cshl.edu/shares/mhammelllab/www-data/TEsmall/hg19.tar.gz",
+        url = {"hg19": "https://www.dropbox.com/scl/fo/nllcuktpoew8diu9kyf66/AIi9PSIc4cU0KTynNcDyYHg/hg19.tar.gz?rlkey=ucnup95d36kzvokcwiy0adb1l&dl=1",
 #               "dm3": "http://labshare.cshl.edu/shares/mhammelllab/www-data/TEsmall/dm3.tar.gz",
 #               "mm9": "http://labshare.cshl.edu/shares/mhammelllab/www-data/TEsmall/mm9.tar.gz",
-               "hg38": "http://labshare.cshl.edu/shares/mhammelllab/www-data/TEsmall/hg38.tar.gz",
-               "dm6": "http://labshare.cshl.edu/shares/mhammelllab/www-data/TEsmall/dm6.tar.gz",
-               "mm10": "http://labshare.cshl.edu/shares/mhammelllab/www-data/TEsmall/mm10.tar.gz",
-               "mm39": "http://labshare.cshl.edu/shares/mhammelllab/www-data/TEsmall/mm39.tar.gz",
-               "GRCz11": "http://labshare.cshl.edu/shares/mhammelllab/www-data/TEsmall/GRCz11.tar.gz",
-               "T2Tv2": "http://labshare.cshl.edu/shares/mhammelllab/www-data/TEsmall/T2Tv2.tar.gz",
+               "hg38": "https://www.dropbox.com/scl/fo/nllcuktpoew8diu9kyf66/AMoleu7HsbKILZup2F6s1qo/hg38.tar.gz?rlkey=ucnup95d36kzvokcwiy0adb1l&dl=1",
+               "dm6": "https://www.dropbox.com/scl/fo/nllcuktpoew8diu9kyf66/AACcdDFYG43-JhTg_01nwBo/dm6.tar.gz?rlkey=ucnup95d36kzvokcwiy0adb1l&dl=1",
+               "mm10": "https://www.dropbox.com/scl/fo/nllcuktpoew8diu9kyf66/AEPIpJpR3CRb0rOa-TVHwMk/mm10.tar.gz?rlkey=ucnup95d36kzvokcwiy0adb1l&dl=1",
+               "mm39": "https://www.dropbox.com/scl/fo/nllcuktpoew8diu9kyf66/AHY6vU2jl2T2XftO6bUcgDo/mm39.tar.gz?rlkey=ucnup95d36kzvokcwiy0adb1l&dl=1",
+               "GRCz11": "https://www.dropbox.com/scl/fo/nllcuktpoew8diu9kyf66/AJerINAfNI7ZnmMuxeqfRtc/GRCz11.tar.gz?rlkey=ucnup95d36kzvokcwiy0adb1l&dl=1",
+               "T2Tv2": "https://www.dropbox.com/scl/fo/nllcuktpoew8diu9kyf66/AKOaCKpfiYSxXjPgACXlQ8Y/T2Tv2.tar.gz?rlkey=ucnup95d36kzvokcwiy0adb1l&dl=1"
                }
         if genome not in url:
               logging.info("Reference genome not available for download")
               logging.info("Please contact mghcompbio@gmail.com for info")
               sys.exit(1)
+
+        outname = (genome,"tar","gz")
+        outfile=".".join(outname)
         path = join(TESMALL, "genomes")
-        filepath = join(path, basename(url[genome]))
-        cmd = "wget --no-check-certificate {0} -O {1}".format(url[genome], filepath)
+        filepath = join(path, outfile)
+        cmd = "wget --no-check-certificate \"{0}\" -O {1}".format(url[genome], filepath)
+#        print(cmd)
         subprocess.call(cmd, shell=True)
 
         tar = tarfile.open(filepath, "r:gz")
