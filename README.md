@@ -40,6 +40,8 @@ $ python setup.py install
 $ conda create -n TEsmall tesmall
 ```
 
+Credit to [niekwitt](https://github.com/niekwit) for creating the recipe.
+
 ### How to run TEsmall
 
 1. Before executing TEsmall, make sure you have activated the environment
