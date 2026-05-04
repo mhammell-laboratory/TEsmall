@@ -15,14 +15,16 @@ $ wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
 $ bash Miniconda3-latest-Linux-x86_64.sh
 ```
 
-### Setup channels
+#### Setup channels
 
 ```
 $ conda config --add channels conda-forge
 $ conda config --add channels bioconda
 ```
 
-### Install TEsmall
+### Installation of TEsmall
+
+#### Using source code
 
 ```
 $ git clone https://github.com/mhammell-laboratory/TEsmall.git
@@ -30,6 +32,12 @@ $ cd TEsmall
 $ conda env create -f environment.yaml -n TEsmall
 $ conda activate TEsmall
 $ python setup.py install
+```
+
+#### Using Bioconda
+
+```
+$ conda create -n TEsmall tesmall
 ```
 
 ### How to run TEsmall
