@@ -9,6 +9,10 @@ Version 2.0.9
 
 A pipeline for profiling TE-derived small RNAs.
 
+[GitHub page](https://github.com/mhammell-laboratory/TEsmall)
+
+[Molly Gale Hammell lab](https://www.mghlab.org/software)
+
 Created by Wen-Wei Liao, Kat O'Neill & Molly Gale Hammell, March 2017
 
 Contact: mghcompbio@gmail.com
@@ -209,6 +213,6 @@ along with TEsmall.  If not, see [this website](http://www.gnu.org/licenses/).
 
 ### Citation
 
-If using the software in a publication, please cite the [following](https://pubmed.ncbi.nlm.nih.gov/30349559/):
+If using the software in a publication, please cite the following:
 
 O'Neill K, Liao WW, Patel A, Hammell MG. (2018) TEsmall Identifies Small RNAs Associated With Targeted Inhibitor Resistance in Melanoma. Front Genet. Oct 5;9:461.
