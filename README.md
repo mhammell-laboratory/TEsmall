@@ -2,6 +2,7 @@
 [![Docker Image Version](https://img.shields.io/docker/v/mhammelllab/tesmall?logo=docker&label=docker%2Fsingularity)](https://hub.docker.com/r/mhammelllab/tesmall/tags)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17381512.svg)](https://doi.org/10.5281/zenodo.17381512)
 [![Pubmed](https://img.shields.io/badge/Pubmed-30349559-blue)](https://pubmed.ncbi.nlm.nih.gov/30349559/)
+![GitHub License](https://img.shields.io/github/license/mhammell-laboratory/TEsmall)
 
 ## TEsmall
 
