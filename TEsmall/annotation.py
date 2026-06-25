@@ -3,7 +3,6 @@ import glob
 import logging
 import os
 
-import subprocess
 import pybedtools
 
 import pandas as pd
@@ -28,6 +27,7 @@ def annotate_reads(multi, annot_dir, order):
     bedfiles = [os.path.join(annot_dir, "{0}.bed".format(s)) for s in order]
     #bedfiles = ['/sonas-hs/mhammell/hpc/home/koneill/.tesmall/genomes/hg19/annotation/structural_RNA.bed', '/sonas-hs/mhammell/hpc/home/koneill/.tesmall/genomes/hg19/annotation/miRNA.bed', '/sonas-hs/mhammell/hpc/home/koneill/.tesmall/genomes/hg19/annotation/hairpin.bed', '/sonas-hs/mhammell/hpc/data/kat/tesmall_em_test/tes_em_test_2/TE.bed', '/sonas-hs/mhammell/hpc/home/koneill/.tesmall/genomes/hg19/annotation/exon.bed', '/sonas-hs/mhammell/hpc/home/koneill/.tesmall/genomes/hg19/annotation/intron.bed', '/sonas-hs/mhammell/hpc/home/koneill/.tesmall/genomes/hg19/annotation/piRNA_cluster.bed']
     outfname = "{0}.anno".format(root)
+
     with open(outfname, "w") as outfile:
         columns = ["rid", "rchr", "rstart", "rend", "rstrand", "rlen", "ftype", "fid", "fchr", "fstart", "fend", "fstrand", "overlap"]
         outfile.write("\t".join(columns) + "\n")
@@ -37,14 +37,17 @@ def annotate_reads(multi, annot_dir, order):
         te_s_index = {}
         te_s_len = {}
         te_s_idx_ct = 0
+        te_s_ids = set()
         te_as_multi = []
         te_as_index = {}
         te_as_len = {}
         te_as_idx_ct = 0
+        te_as_ids = set()
         mir_multi = []
         mir_index = {}
         mir_len = {}
         mir_idx_ct = 0
+        mir_ids = set()
         te_s_read_ref = {}
         te_as_read_ref = {}
         mir_read_ref = {}
@@ -85,7 +88,8 @@ def annotate_reads(multi, annot_dir, order):
                             if x != 1:
                                 mir_read_ref[f_id] = [r_id]
                                 array_count += 1
-                            if f_id not in list(mir_index.values()):
+                            if f_id not in mir_ids:
+                                mir_ids.add(f_id)
                                 mir_index[mir_idx_ct] = str(f_id)
                                 mir_len[mir_idx_ct] = int(f_len)
                                 mir_idx_ct += 1
@@ -110,7 +114,8 @@ def annotate_reads(multi, annot_dir, order):
                                 if y != 1:
                                     te_s_read_ref[f_id] = [r_id]
                                     array_count += 1
-                                if f_id not in list(te_s_index.values()):
+                                if f_id not in te_s_ids:
+                                    te_s_ids.add(f_id)
                                     te_s_index[te_s_idx_ct] = str(f_id)
                                     te_s_len[te_s_idx_ct] = int(f_len)
                                     te_s_idx_ct += 1
@@ -132,7 +137,8 @@ def annotate_reads(multi, annot_dir, order):
                                 if z != 1:
                                     te_as_read_ref[f_id] = [r_id]
                                     array_count += 1
-                                if f_id not in list(te_as_index.values()):
+                                if f_id not in te_as_ids:
+                                    te_as_ids.add(f_id)
                                     te_as_index[te_as_idx_ct] = str(f_id)
                                     te_as_len[te_as_idx_ct] = int(f_len)
                                     te_as_idx_ct += 1
