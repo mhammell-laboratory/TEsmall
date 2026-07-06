@@ -83,6 +83,22 @@ Credit to [niekwitt](https://github.com/niekwit) for creating the recipe.
 	`genomes` folder inside `/path/to/another/folder/`.
 	
 	The default location is `$HOME/TEsmall_db/`
+5. To download and install genomes without running TEsmall, you can use `--install-db` parameter
+   
+   ```
+   $ TEsmall -g hg38 --install-db
+   ```
+   This will install the `hg38` genome and annotations to the TEsmall database folder (default to `$HOME/TEsmall_db`.
+
+   To install into a different folder, you can either set the `--db_folder` parameter, e.g.:
+   ```
+   $ TEsmall -g hg38 --install-db --db_folder /path/to/folder
+   ```
+   or to a separate location entirely
+   ```
+   $ TEsmall -g hg38 --install-db /path/to/another/folder
+   ```
+   Credit to [@niekwit](https://github.com/niekwit) for developing this feature.
 
 ### For more information
 
@@ -120,9 +136,16 @@ optional arguments:
                         and auto-detected from the filename extension (.gz).
   -l STR [STR ...], --label STR [STR ...]
                         Unique label for each sample.
-  --dbfolder STR        Custom location of TEsmall database folder (containing the "genomes" folder).
+  --dbfolder STR        Custom location of TEsmall database folder (containing
+                        the "genomes" folder).
 						DEFAULT: $HOME/TEsmall_db/
-
+  --install-db [PATH]   Only download/install the reference genome and annotation
+                        files for -g/--genome, then exit. Optional
+                        PATH sets the install location, otherwise --dbfolder
+                        (or $HOME/TEsmall_db/ if that is also unset) is used.
+                        Run this once before launching parallel per-sample
+                        jobs that share the same database folder, to avoid
+                        multiple jobs downloading it at once.
   --verbose INT         Set verbose level.
                         0: only show critical message
 						1: show additional warning message
