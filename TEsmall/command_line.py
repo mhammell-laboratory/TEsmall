@@ -46,18 +46,33 @@ def main():
     parser.add_argument("-l", "--label", metavar="STR", nargs="+",
         help="Unique label for each sample.")
     parser.add_argument("--dbfolder", metavar="STR", default="NULL", help="Custom location of TEsmall database folder (containing the \"genomes\" folder). Defaults to $HOME/TEsmall_db/")
+    parser.add_argument("--install-db", nargs="?", const="", default=None, metavar="PATH",
+        help="Only download/install the reference genome and annotation files for "
+        "-g/--genome, then exit. Optional PATH sets the install location, otherwise "
+        "--dbfolder (or $HOME/TEsmall_db/ if that is also unset) is used. Run this "
+        "once before launching parallel per-sample jobs that share the same database "
+        "folder, to avoid multiple jobs downloading it at once.")
     parser.add_argument("--verbose", metavar="INT", type=int, default=2,
         help="Set verbose level. 0: only show critical message, 1: show additional "
         "warning message, 2: show process information, 3: show debug messages. DEFAULT:2")
     parser.add_argument("-v", "--version", action="version", version="%(prog)s {0}".format(__version__))
     args = parser.parse_args()
-    if not args.fastq:
-        parser.print_help(sys.stderr)
-        sys.exit(1)
 
     logging.basicConfig(level=(4 - args.verbose) * 10,
         format="%(asctime)s %(levelname)s %(message)s",
         stream=sys.stderr, filemode="w")
+
+    # Install-only mode: just fetch the reference database and stop, so this can be
+    # run once up front, before launching many parallel per-sample analysis jobs.
+    if args.install_db is not None:
+        dbfolder = args.install_db if args.install_db else args.dbfolder
+        get_requirements(dbfolder, args.genome)
+        logging.info("Reference database installed")
+        sys.exit(0)
+
+    if not args.fastq:
+        parser.print_help(sys.stderr)
+        sys.exit(1)
 
     bwtidx, annot_dir = get_requirements(args.dbfolder,args.genome)
     annofiles = []
