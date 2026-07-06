@@ -83,8 +83,7 @@ Credit to [niekwitt](https://github.com/niekwit) for creating the recipe.
 	`genomes` folder inside `/path/to/another/folder/`.
 	
 	The default location is `$HOME/TEsmall_db/`
-5. To download and install genomes without running TEsmall, you can use `--install-db` parameter
-   
+5. To download and install genomes without running TEsmall, you can use `--install-db` parameter:
    ```
    $ TEsmall -g hg38 --install-db
    ```
@@ -94,7 +93,7 @@ Credit to [niekwitt](https://github.com/niekwit) for creating the recipe.
    ```
    $ TEsmall -g hg38 --install-db --db_folder /path/to/folder
    ```
-   or to a separate location entirely
+   or to a separate location entirely, e.g.:
    ```
    $ TEsmall -g hg38 --install-db /path/to/another/folder
    ```
