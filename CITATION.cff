@@ -1,0 +1,47 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: TEsmall
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Wen-Wei
+    family-names: Liao
+  - given-names: Kathryn
+    family-names: O'Neill
+    email: Kathryn.O'neill@nyulangone.org
+    affiliation: NYU Langone Health
+    orcid: 'https://orcid.org/0000-0002-5247-6428'
+  - given-names: Molly
+    family-names: Gale Hammell
+    email: Molly.GaleHammell@nyulangone.org
+    affiliation: NYU Grossman School of Medicine
+    orcid: 'https://orcid.org/0000-0003-0405-8392'
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.17381511
+    description: Concept DOI for this work
+repository-code: 'https://github.com/mhammell-laboratory/TEsmall'
+url: 'https://www.mghlab.org/software/tesmall'
+abstract: A pipeline for profiling TE-derived small RNAs.
+license: GPL-3.0
+preferred-citation:
+  type: article
+  title: "TEsmall Identifies Small RNAs Associated With Targeted Inhibitor Resistance in Melanoma"
+  authors:
+    - family-names: O'Neill
+      given-names: Kathryn
+    - family-names: Liao
+      given-names: Wen-Wei
+    - family-names: Patel
+      given-names: Ami
+    - family-names: Gale Hammell
+      given-names: Molly
+  year: 2018
+  journal: "Frontiers in Genetics"
+  volume: 5
+  issue: 9
+  doi: "10.3389/fgene.2018.00461"
